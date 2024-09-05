@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+}
+
+#navbar {
+  background-color: white;
+  padding: 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+#navbar-list {
+  display: flex;
+}
+
+#navbar-list li {
+  list-style-type: none;
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+a:hover {
+  color: gray;
+}
+
+button {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 30px;
+  margin-right: 2rem;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333;
+  transform: scale(1.07);
+  transition: transform 0.3s ease;
+}
+
+#header {
+  background-color: #B9E9FF;
+  padding: 2rem;
+  text-align: center;
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#project-header {
+  margin: 4rem 5rem;
+}
+
+#project-list { 
+  min-height: 250px;
+  border: solid 2px lightgray;
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 5rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.project {
+  width: 20%;
+  padding: 1rem 5rem;
+  margin: 1rem;
+  border: solid 1px lightgray;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#project-form {
+    max-width: 600px; 
+    margin: 4rem auto; 
+    padding: 4rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#project-form label {
+    display: block; 
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s ease; 
+}
+
+.form-button {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 0 auto; 
+  display: block; 
+}
+
+.form-button:hover {
+  background-color: #333;
+  transform: scale(1.07);
+  transition: transform 0.3s ease;
+}
+
+
+footer {
+  background-color: #B9E9FF;
+  padding: 1rem;
+  text-align: center;
+  font-size: 25px;
+}
