@@ -1,8 +1,17 @@
+import { Children, PropsWithChildren } from "react"
 
 
-function Experience({ description }: { description: string }) {
+
+function Experience(
+    props: Readonly<PropsWithChildren<{}>>
+) {
+
+    const { children } = props
+
     return (
-        <p>{description}</p>
+        <p>
+            {children}
+        </p>
     )
 }
 

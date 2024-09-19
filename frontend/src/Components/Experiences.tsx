@@ -5,13 +5,18 @@ import Experience from './Experience'
 //     experience2?: string;
 // }
 
-function Experiences({ experienceOne, experienceTwo }: { experienceOne: string, experienceTwo: string }) {
+function Experiences({ experiences }: { experiences: string[] }) {
 
     return (
-        <div>
-            <Experience description={experienceOne} />
-            <Experience description={experienceTwo} />
-        </div>
+        <section>
+            <h2>Experiences: </h2>
+            
+            {experiences ? experiences.map((experience, index) => (
+                <Experience key={index}>{experience}</Experience>
+            )) : (<p>No experiences</p>)
+            }
+
+        </section>
     )
 }
 

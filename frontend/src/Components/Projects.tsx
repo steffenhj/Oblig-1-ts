@@ -1,38 +1,40 @@
 import Project from './Project';
 
-const projectOne = {
-    name: 'Project One',
-    description: 'This is a project',
-    category: 'Web Development'
-}
-
-const projectTwo = {
-    name: 'Project Two',
-    description: 'This is a project',
-    category: 'Web Development'
-}
-
-const projectThree = {
-    name: 'Project Three',
-    description: 'This is a project',
-    category: 'Web Development'
-}
-
-const projectFour = {
-    name: 'Project Four',
-    description: 'This is a project',
-    category: 'Web Development'
+type ProjectType = {
+    name: string;
+    description: string;
+    category: string;
 }
 
 
-function Projects() {
+
+function Projects({ projects, setProjects }: { projects: ProjectType[], setProjects: React.Dispatch<React.SetStateAction<Project[]>> }) {
     return (
-        <>
-            <Project name={projectOne.name} description={projectOne.description} catergory={projectOne.category}/>
-            <Project name={projectTwo.name} description={projectTwo.description} catergory={projectTwo.category}/>
-            <Project name={projectThree.name} description={projectThree.description} catergory={projectThree.category}/>
-            <Project name={projectFour.name} description={projectFour.description} catergory={projectFour.category}/>
-        </>
+        <section>
+            <h2>Projects: </h2>
+
+            {projects && projects.length > 0 ? (
+                <>
+                    {projects.map((project, index) => (
+                        <article key={index}>
+                            <Project props={project} setProjects={setProjects} />
+                        </article>
+                    ))}
+
+                    <h3>Category summary</h3>
+                    <article>
+                        {Array.from(new Set(projects.map(project => project.category))).map(category => (
+                            <p key={category}>
+                                {category}: {projects.filter(project => project.category === category).length}
+                            </p>
+                        ))}
+                    </article>
+                </>
+            ) : (
+                <p>No projects</p>
+            )}
+
+        </section>
     )
 }
 
