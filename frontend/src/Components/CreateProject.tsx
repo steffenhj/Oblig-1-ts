@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../App.css'
 
 type Project = {
     name: string;
@@ -37,7 +38,7 @@ function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetS
 
         const formData = new FormData(form);
         
-        const nameInput = formData.get('name') as string;
+        const nameInput = formData.get('project-name') as string;
         if (!nameInput || typeof nameInput !== 'string') {
             alert('Name is required')
             return}
@@ -46,7 +47,7 @@ function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetS
             return;
         }
 
-        const descriptionInput = formData.get('description') as string;
+        const descriptionInput = formData.get('project-description') as string;
         if (!descriptionInput || typeof descriptionInput !== 'string') {
         alert('Description is required') 
         return}
@@ -54,7 +55,7 @@ function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetS
             alert('Description must be at least 10 characters long');
             return;}
 
-        const categoryInput = formData.get('category') as string;
+        const categoryInput = formData.get('project-category') as string;
         if (!categoryInput || typeof categoryInput !== 'string') 
             {alert('Category is required') 
             return
@@ -78,25 +79,23 @@ function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetS
         <>
         <h2>Create Project</h2>
         
-        <form onSubmit={handleSubmit}>
-                <label htmlFor="name">
+        <form onSubmit={handleSubmit} id="project-form">
+                <label htmlFor="project-name">
                     Title:
-                    <input id="name" name="name" type="text" 
-                    value={name} onChange={updateName} />
+                    <input className="form-input" id="project-name" name="project-name" type="text" value={name} onChange={updateName} />
                 </label>
                 <br />
-                <label htmlFor="description">
-                    Message:
-                    <textarea id="description" name="description" 
-                    value={description} onChange={updateDescription} />
+                <label htmlFor="project-description">
+                    Project Description:
+                    <textarea className="form-textarea" id="project-description" name="project-description" value={description} onChange={updateDescription} />
                 </label>
                 <br />
-                <label htmlFor="category">
+                <label htmlFor="project-category">
                     Category:
-                    <input id="category" name="category" type="text" 
+                    <input className="form-input" id="project-category" name="project-category" type="text" 
                     value={category} onChange={updateCategory} />
                 </label>
-                <button type="submit" >Send</button>
+                <button className="form-button" type="submit" >Add Project</button>
             </form>
         </>
     )

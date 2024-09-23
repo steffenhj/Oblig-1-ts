@@ -1,20 +1,10 @@
+import '../App.css'
 
-
-type HeaderProps = {
-    student?: string;
-    degree?: string;
-    points?: number;
-}
-
-function Header(props: HeaderProps) {
-    const { student, degree, points } = props
-
+export default function Header() {
     return (
-            <>
-                <h1>{student}</h1>
-                <p>{degree} - {points} studiepoeng</p>
-            </>
+        <header id="header">
+            <h1>My portfolio</h1>
+            <p>Here are some of the projects I have worked on.</p>
+        </header>
     )
 }
-
-export default Header

@@ -1,11 +1,13 @@
 import './App.css'
-import Header from './Components/Header.tsx'
 import Experiences from './Components/Experiences.tsx'
 import Contact from './Components/Contact.tsx'
 import Projects from './Components/Projects.tsx'
 import CreateProject from './Components/CreateProject.tsx'
 import { useEffect, useState } from 'react'
 import { ofetch } from 'ofetch'
+import Nav from './Components/Nav.tsx'
+import Header from './Components/Header.tsx'
+import Footer from './Components/Footer.tsx'
 
 type Project = {
   name: string;
@@ -19,9 +21,9 @@ function App() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   
-  const student = 'Halgeir Geirson'
-  const degree = 'Bachelor IT'
-  const points = 180
+  // const student = 'Halgeir Geirson'
+  // const degree = 'Bachelor IT'
+  // const points = 180
   
   const experiences = [
     'Figma UI for customer X',
@@ -50,12 +52,14 @@ function App() {
 
   return (
     <>
-      <Header student={student} degree={degree} points={points} />
+      <Nav />
+      <Header />
       <Experiences experiences={experiences} />
       <Contact email={email} />
       <Projects projects={projects} setProjects={setProjects} />
       <CreateProject setProjects={setProjects} />
-      </>
+      <Footer />
+    </>
   )
 }
 

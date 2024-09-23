@@ -1,4 +1,4 @@
-
+import '../App.css'
 
 type Project = {
     name: string;

@@ -1,4 +1,5 @@
 import Project from './Project';
+import '../App.css';
 
 type ProjectType = {
     name: string;
@@ -10,31 +11,35 @@ type ProjectType = {
 
 function Projects({ projects, setProjects }: { projects: ProjectType[], setProjects: React.Dispatch<React.SetStateAction<Project[]>> }) {
     return (
-        <section>
-            <h2>Projects: </h2>
+        <>
+            <section id='projects-section'>
+                <h2>Projects: </h2>
 
-            {projects && projects.length > 0 ? (
-                <>
-                    {projects.map((project, index) => (
-                        <article key={index}>
-                            <Project props={project} setProjects={setProjects} />
-                        </article>
+                <section id='projects'>
+                    {projects && projects.length > 0 ? (
+                        <>
+                            {projects.map((project, index) => (
+                                <article key={index} className='project'>
+                                    <Project props={project} setProjects={setProjects} />
+                                </article>
+                            ))}
+                        </>
+                    ) : (
+                        <p>No projects</p>
+                    )}
+                </section>
+
+                <article id='projects-summary'>
+                    <h2>Category summary</h2>
+
+                    {Array.from(new Set(projects.map(project => project.category))).map(category => (
+                        <p key={category}>
+                            {category}: {projects.filter(project => project.category === category).length}
+                        </p>
                     ))}
-
-                    <h3>Category summary</h3>
-                    <article>
-                        {Array.from(new Set(projects.map(project => project.category))).map(category => (
-                            <p key={category}>
-                                {category}: {projects.filter(project => project.category === category).length}
-                            </p>
-                        ))}
-                    </article>
-                </>
-            ) : (
-                <p>No projects</p>
-            )}
-
-        </section>
+                </article>
+            </section>
+        </>
     )
 }
 
