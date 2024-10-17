@@ -1,15 +1,11 @@
 import Project from './Project';
-import '../App.css';
+import '../../../App.css';
 
-type ProjectType = {
-    name: string;
-    description: string;
-    category: string;
-}
+import { Project as ProjectType } from '../Types';
 
 
 
-function Projects({ projects, setProjects }: { projects: ProjectType[], setProjects: React.Dispatch<React.SetStateAction<Project[]>> }) {
+function Projects({ projects, setProjects }: { projects: ProjectType[], setProjects: React.Dispatch<React.SetStateAction<ProjectType[]>> }) {
     return (
         <>
             <section id='projects-section'>

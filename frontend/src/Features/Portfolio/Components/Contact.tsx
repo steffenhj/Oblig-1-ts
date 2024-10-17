@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../App.css'
+import '../../../App.css'
 
 type ContactProps = {
     email?: string;
@@ -60,6 +60,8 @@ function Contact( props: ContactProps ) {
             <p>{email}</p>
             <button onClick={handleButtonClick}>Show Email</button>
 
+            <pre>{JSON.stringify({ name, message }, null, 2)}</pre>
+
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">
                     Name:
@@ -75,8 +77,6 @@ function Contact( props: ContactProps ) {
                 <br />
                 <button type="submit" >Send</button>
             </form>
-
-            <pre>{JSON.stringify({ name, message }, null, 2)}</pre>
         </>
     )
 }

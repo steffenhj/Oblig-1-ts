@@ -1,13 +1,10 @@
 import { useState } from "react";
-import '../App.css'
+import '../../../App.css';
 
-type Project = {
-    name: string;
-    description: string;
-    category: string;
-}
+import { Project } from "../Types";
+import { formatDistance } from "../Helpers/format";
 
-function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetStateAction<Project[]>> }) {
+function ProjectForm({ setProjects }: { setProjects: React.Dispatch<React.SetStateAction<Project[]>> }) {
     const [name, setName] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [category, setCategory] = useState<string>('');
@@ -65,19 +62,31 @@ function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetS
             return;
         }
 
-        setProjects((prevProjects) => [...prevProjects, 
-        { name: nameInput, description: descriptionInput, category: categoryInput }]);
+        setProjects((prevProjects) => [...prevProjects, {id: crypto.randomUUID(), title: nameInput, description: descriptionInput, category: categoryInput, publishedAt: formatedDate}]);
 
         setName('');
         setDescription('');
         setCategory('');
         form.reset();
+
+        // id: z.string().uuid(),
+        // title: z.string(),
+        // description: z.string(),
+        // category: z.string(),
+        // publishedAt: z.string().datetime(),
     }
 
 
     return (
         <>
         <h2>Create Project</h2>
+
+        <pre>
+            {JSON.stringify({ name, description, category },
+                null,
+                2
+            )}
+        </pre>
         
         <form onSubmit={handleSubmit} id="project-form">
                 <label htmlFor="project-name">
@@ -101,4 +110,4 @@ function CreateProject({ setProjects }: { setProjects: React.Dispatch<React.SetS
     )
 }
 
-export default CreateProject
+export default ProjectForm
