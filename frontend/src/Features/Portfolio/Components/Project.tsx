@@ -18,7 +18,7 @@ function Project({ props, setProjects }: {props: ProjectType, setProjects: React
             <p>{description}</p>
             <p>{category}</p>
             <p>Published: {formatedDate}</p>
-            <button onClick={removeProject}>Remove project</button>
+            <button onClick={removeProject} className='project-button'>Remove project</button>
         </>
     )
 }

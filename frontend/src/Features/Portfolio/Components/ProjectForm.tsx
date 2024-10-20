@@ -62,7 +62,7 @@ function ProjectForm({ setProjects }: { setProjects: React.Dispatch<React.SetSta
             return;
         }
 
-        setProjects((prevProjects) => [...prevProjects, {id: crypto.randomUUID(), title: nameInput, description: descriptionInput, category: categoryInput, publishedAt: formatedDate}]);
+        setProjects((prevProjects) => [...prevProjects, {id: crypto.randomUUID(), title: nameInput, description: descriptionInput, category: categoryInput}]);
 
         setName('');
         setDescription('');

@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
-import Nav from "./Nav";
 import Footer from "./Footer";
+import Header from "./Header";
 
 type LayoutProps = PropsWithChildren;
 
@@ -10,9 +10,7 @@ export default function Layout(props: LayoutProps) {
 
     return (
         <>
-            <header>
-                <Nav />
-            </header>
+            
             
             <main className="container"> {children} </main>
 
