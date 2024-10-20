@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ofetch } from 'ofetch'
-import Header from './Components/Header';
+import Header from '../../Components/Header';
 import Experiences from './Components/Experiences';
 import Contact from './Components/Contact';
 import ProjectForm from './Components/ProjectForm';
@@ -11,7 +11,7 @@ import { ProjectType } from './Types';
 
 
 export default function HomePage() {
-  const { status, get, projects, error, setProjects } = useProjects();
+  const { status, get, projects = [], error, setProjects } = useProjects();
 
 
 
@@ -31,7 +31,6 @@ export default function HomePage() {
 
       return (
         <>
-            <Header />
             <Experiences experiences={experiences} />
             <Contact email={email} />
             <Projects projects={projects} setProjects={setProjects} />
