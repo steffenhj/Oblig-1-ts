@@ -2,10 +2,15 @@ import { useEffect, useState } from 'react';
 import '../App.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 
 function Nav() {
     const [darkMode, setDarkMode] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(prevIsOpen => !prevIsOpen);
+    };
 
     useEffect(() => {
         const theme = window.localStorage.getItem('theme');
@@ -27,23 +32,37 @@ function Nav() {
     };
 
     return (
-        <nav id="navbar">
-            <section>
-                    <a href=""><FontAwesomeIcon icon={faUser} size="xl"/> </a>
-                    <h1>Steffen Johannessen</h1>
-            </section>
+        <>
+            <nav id="navbar">
 
-            <ul id="navbar-list">
-                <li><a href="">About</a></li>
-                <li><a href="">Skills</a></li>
-                <li><a href="">Resume</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
+                <ul id="navbar-list">
+                    <li><a href="">About</a></li>
+                    <li><a href="">Skills</a></li>
+                    <li><a href="">Resume</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
 
-            <button onClick={toggleDarkMode} className="dark-mode-toggle">
-                {darkMode ? <FontAwesomeIcon icon={faSun} size="2xl"/> : <FontAwesomeIcon icon={faMoon} size="2xl"/>}
-            </button>
-        </nav>
+                <section id='toggle-nav-menu'>
+                    <button onClick={toggleMenu}>
+                        {isOpen ? <FontAwesomeIcon icon={faX} size="2xl"/> : <FontAwesomeIcon icon={faBars} size="2xl"/>}
+                    </button>
+                </section>
+
+                <button onClick={toggleDarkMode} className="dark-mode-toggle">
+                    {darkMode ? <FontAwesomeIcon icon={faSun} size="2xl"/> : <FontAwesomeIcon icon={faMoon} size="2xl"/>}
+                </button>
+            </nav>
+            {isOpen && (
+                <section id='navbar-container'>
+                    <ul>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Skills</a></li>
+                        <li><a href="">Resume</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                </section>
+            )}
+        </>
     );
 }
 
