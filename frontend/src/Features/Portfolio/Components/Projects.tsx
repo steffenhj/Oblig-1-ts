@@ -6,6 +6,7 @@ import { Project as ProjectType } from '../Types';
 
 
 function Projects({ projects, setProjects }: { projects: ProjectType[], setProjects: React.Dispatch<React.SetStateAction<ProjectType[]>> }) {
+
     return (
         <>
             <section id='projects-section'>
@@ -28,9 +29,9 @@ function Projects({ projects, setProjects }: { projects: ProjectType[], setProje
                 <article id='projects-summary'>
                     <h2>Category summary</h2>
 
-                    {Array.from(new Set(projects.map(project => project.category))).map(category => (
-                        <p key={category}>
-                            {category}: {projects.filter(project => project.category === category).length}
+                    {Array.from(new Set(projects.flatMap(project => project.categories))).map((category, index) => (
+                        <p key={index}>
+                            {category}: {projects.filter(project => project.categories.includes(category)).length}
                         </p>
                     ))}
                 </article>

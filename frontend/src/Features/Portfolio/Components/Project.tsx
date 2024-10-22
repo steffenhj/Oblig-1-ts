@@ -5,7 +5,7 @@ import { formatDistance } from '../Helpers/format';
 
 
 function Project({ props, setProjects }: {props: ProjectType, setProjects: React.Dispatch<React.SetStateAction<ProjectType[]>>} ) {
-    const { title, description, category, publishedAt } = props
+    const { title, description, categories, publishedAt } = props
     const formatedDate = formatDistance(publishedAt)
 
     const removeProject = () => {
@@ -16,7 +16,7 @@ function Project({ props, setProjects }: {props: ProjectType, setProjects: React
         <>
             <h2>{title}</h2>
             <p>{description}</p>
-            <p>{category}</p>
+            <p>Categories: {categories.join(', ')}</p>
             <p>Published: {formatedDate}</p>
             <button onClick={removeProject} className='project-button'>Remove project</button>
         </>
