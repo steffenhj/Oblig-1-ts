@@ -2,7 +2,9 @@ type Project = {
     id: string;
     title: string;
     description: string;
-    category: string;
+    categories: string[];
+    tags: string[];
+    public: boolean;
     publishedAt: Date;
 }
 
