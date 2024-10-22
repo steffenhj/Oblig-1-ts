@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from "react";
 import Footer from "./Footer";
-import Header from "./Header";
 import Logo from "./Logo";
 import Nav from "./Nav";
 

@@ -1,6 +1,5 @@
 import '../App.css';
-import Logo from './Logo';
-import Nav from './Nav';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faXTwitter } from '@fortawesome/free-brands-svg-icons';
