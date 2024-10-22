@@ -28,10 +28,11 @@ export function useProjects() {
     const fetchData = useCallback(async () => {
         try {
             setStatus('loading');
-            const projects = await ProjectsApi.list();
+            const result = await ProjectsApi.list();
             if (projects === undefined) {console.log('projects is undefined, defaulting to empty array')}
+            console.log('useProjects: Response data:', result?.data);
             
-            setProjects(projects ?? []);
+            setProjects(result?.data ?? []);
             setStatus('success');
         } catch (error) {
             console.error(error);

@@ -1,23 +1,24 @@
 import { ofetch } from 'ofetch'
 
 import { endpoints } from '../../../Config/urls'
-import { ProjectsSchema } from '../Helpers/schema'
+import { projectsSchema, validateProject } from '../Helpers/schema'
 
 const url = endpoints.projects
 
 const list = async () => {
     try {
-        const projects = await ofetch(url)
-        console.log('API Response:', projects); // Log the raw API response
-        console.log('Response data:', projects.data); 
+        const projects = await ofetch(url, {
+            credentials: 'include',
+        });
+        console.log('api.ts ofetch: Response data:', projects.data); 
 
-        console.log('safeParse', ProjectsSchema.safeParse(projects))
+        console.log('safeParse', projectsSchema.safeParse(projects.data))
 
-        console.log('.parse', ProjectsSchema.parse(projects))
-        return ProjectsSchema.parse(projects)
+        console.log('validateProject', validateProject(projects.data))
+        return validateProject(projects.data)
     } catch (error) {
         console.error(error)
     }
-}
+};
 
 export default { list }

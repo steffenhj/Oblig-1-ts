@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ProjectSchema } from '../Helpers/schema';
+import { projectSchema } from '../Helpers/schema';
 
 
 
@@ -12,4 +12,4 @@ import { ProjectSchema } from '../Helpers/schema';
 //     publishedAt: Date;
 // }
 
-export type Project = z.infer<typeof ProjectSchema>;
+export type Project = z.infer<typeof projectSchema>;
