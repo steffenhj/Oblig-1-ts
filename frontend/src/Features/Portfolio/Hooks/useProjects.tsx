@@ -47,7 +47,55 @@ export function useProjects() {
         fetchData();
     }, [fetchData]);
 
+    const add = async (data: Partial<Project>) => {
+        try {
+            setStatus("loading");
+            await ProjectsApi.create(data);
+            await fetchData();
+            setStatus("success");
+        } catch (error) {
+            console.error(error);
+            setStatus("error");
+            setError("Error adding project");
+        } finally { 
+            resetToIdle();
+        }
+    }
+
+    const remove = async (id: string) => {
+        try {
+            setStatus("loading")
+            await ProjectsApi.remove(id)
+            await fetchData()
+            setStatus("success")
+        } catch (error) {
+            console.error(error)
+            setStatus("error")
+            setError("Error removing project")
+        } finally {
+            resetToIdle()
+        }
+    }
+
+    const update = async (id: string, data: Partial<Project>) => {
+        try {
+            setStatus("loading")
+            await ProjectsApi.update(id, data)
+            await fetchData()
+            setStatus("success")
+        } catch (error) {
+            console.error(error)
+            setStatus("error")
+            setError("Error updating project")
+        } finally {
+            resetToIdle()
+        }
+    }
+
     return {
+        add,
+        remove,
+        update,
         get: fetchData,
         projects,
         error,
