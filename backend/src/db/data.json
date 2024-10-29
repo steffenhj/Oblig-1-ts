@@ -1,0 +1,56 @@
+{
+    "users": [
+      {
+        "id": "c9b1d5e6-8f3b-4c3b-9f1e-2b7e6b6e1f1a",
+        "name": "John Doe",
+        "email": "JohnDoe@gmail.com"
+      },
+      {
+        "id": "d4e6f7a8-9b2c-4d3e-8f1e-3b7e6b6e2f2b",
+        "name": "Jane Doe",
+        "email": "JaneDoe@gmail.com"
+      }
+    ],
+    "projects": [
+      {
+        "id": "1c697f5e-71f6-4d43-a0b4-134d09e0f3f4",
+        "title": "Project One",
+        "description": "This is a project",
+        "categories": "Web Development, Frontend",
+        "tags": "react, nodejs, hono",
+        "public": true,
+        "published_at": "2024-10-23T14:00:00.000Z",
+        "participants": ["d4e6f7a8-9b2c-4d3e-8f1e-3b7e6b6e2f2b", "c9b1d5e6-8f3b-4c3b-9f1e-2b7e6b6e1f1a"]
+      },
+      {
+        "id": "f6e7a12e-8c4b-4cd2-b91f-e0b37425a743",
+        "title": "Project Two",
+        "description": "This is a project",
+        "categories": "Web Development, Backend",
+        "tags": "react, nodejs, hono",
+        "public": true,
+        "published_at": "2024-10-23T14:00:00.000Z",
+        "participants": ["d4e6f7a8-9b2c-4d3e-8f1e-3b7e6b6e2f2b", "c9b1d5e6-8f3b-4c3b-9f1e-2b7e6b6e1f1a"]
+      },
+      {
+        "id": "a6a30eaf-9263-4260-935f-249f7bcf912b",
+        "title": "Project Three",
+        "description": "This is a project",
+        "categories": "Web Development, Fullstack",
+        "tags": "react, nodejs, hono",
+        "public": true,
+        "published_at": "2024-10-23T14:00:00.000Z",
+        "participants": ["d4e6f7a8-9b2c-4d3e-8f1e-3b7e6b6e2f2b", "c9b1d5e6-8f3b-4c3b-9f1e-2b7e6b6e1f1a"]
+      },
+      {
+        "id": "d3522877-dc72-485e-a4d6-3492a062d0f4",
+        "title": "Project Four",
+        "description": "This is a project",
+        "categories": "Web Development, DevOps",
+        "tags": "react, nodejs, hono",
+        "public": false,
+        "published_at": "2024-10-23T14:00:00.000Z",
+        "participants": ["d4e6f7a8-9b2c-4d3e-8f1e-3b7e6b6e2f2b", "c9b1d5e6-8f3b-4c3b-9f1e-2b7e6b6e1f1a"]
+      }
+    ]
+  }
