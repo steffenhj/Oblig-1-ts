@@ -1,11 +1,19 @@
 import Project from './Project';
 import '../../../App.css';
 
-import { Project as ProjectType } from '../Types';
+import type { HandleMutation, Project as ProjectType } from '../Types';
 
+type ProjectProps = {
+    handleProjectMutation: HandleMutation;
+    projects: ProjectType[];
+};
 
-
-function Projects({ projects, setProjects }: { projects: ProjectType[], setProjects: React.Dispatch<React.SetStateAction<ProjectType[]>> }) {
+function Projects(props: ProjectProps) {
+    const { projects = [], handleProjectMutation } = props;
+    
+    const removeProject = (id: string) => {
+        handleProjectMutation({ action: "remove", id });
+    }
 
     return (
         <>
@@ -17,7 +25,7 @@ function Projects({ projects, setProjects }: { projects: ProjectType[], setProje
                         <>
                             {projects.map((project, index) => (
                                 <article key={index} className='project'>
-                                    <Project props={project} setProjects={setProjects} />
+                                    <Project props={project} removeProject={removeProject} />
                                 </article>
                             ))}
                         </>

@@ -1,48 +1,61 @@
-import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from "hono/cors";
-import { projects } from './data/projects'
+import { prettyJSON } from 'hono/pretty-json';
 
 import { User } from './features/users/types/types';
-import { authMiddleware } from './features/users/utils/middleware';
+import { type ServerEnv, env } from './lib/env';
+import { type DB, db } from './db/db';
+import { handleError } from "@/lib/error";
+import { makeLogger, type Logger } from './lib/logger';
+import { projectController } from './features/projects/controller';
 
 type ContextVariables = {
   user: User | null; 
 }
 
-const app = new Hono<{ Variables: ContextVariables}>()
+export type ServiceContext = {
+  db: DB;
+  logger: Logger;
+};
 
-app.use("*", 
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true
-  }));
-
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
-
-
+export type HonoEnv = {
+  Bindings: ServerEnv;
+  Variables: {
+    services: ServiceContext;
+  } & ContextVariables;
+};
 
 
+export const makeApp = (
+  database: DB = db,
+  logger: Logger = makeLogger({ logLevel: env.LOG_LEVEL, env: env.NODE_ENV })
+) => {
+  const app = new Hono<HonoEnv>();
+  app.use("*", 
+    cors({
+      origin: `${env.FRONTEND_URL}`,
+      credentials: true
+    })
+  );
+  app.use(prettyJSON());
+  app.use("*", async (c, next) => {
+    c.set("services", {
+      logger,
+      db: database,
+    });
 
-app.get('/api/v1/projects', authMiddleware(), async (c) => {
+    await next();
+  });
 
-  const user = c.get("user")
-  console.log('user', user)
+  // '/api/v1/projects' endpoint
 
-  let visibleProjects;
+  app.route("/api/v1/projects", projectController)
 
-  if (user?.role === 'admin') {
-    visibleProjects = projects
-  } else {
-    visibleProjects = projects.filter((project) => project.public === true)
-  }
+  app.onError(handleError);
 
-  return c.json({
-    data: visibleProjects
-    
-  })
-})
+  return app;
+}
+
+const app = makeApp();
 
 export default app
