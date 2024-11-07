@@ -47,9 +47,9 @@ export default function HomePage() {
       return (
         <>
             <Experiences experiences={experiences} />
-            <Contact email={email} />
             <Projects projects={projects} handleProjectMutation={handleProjectMutation} />
             <ProjectForm onSubmit={onSutmit} />
+            <Contact email={email} />
         </>
       )
 
