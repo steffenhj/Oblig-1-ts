@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap');
+
+/* Default (Light mode) variables */
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --primary-color: purple;
+  --hover-color: #a826f9;
+  --text-color: black;
+  --hover-text-color: gray;
+  --background-color: #F2F0EA;
+  --header-bg: #A8D5E3;
+  --form-bg: #f9f9f9;
+  --form-input-border: #ccc;
+  --form-button-hover-bg: #333;
+  --border-color: lightgray;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --primary-color: #a826f9;
+  --hover-color: #be5eff;
+  --text-color: white;
+  --hover-text-color: #cfcfcf;
+  --background-color: #202833;
+  --header-bg: #2e3a48;
+  --form-bg: #333;
+  --form-input-border: #555;
+  --form-button-hover-bg: #555;
+  --border-color: #444;
+  --box-shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+main {
+  width: 100%;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media (min-width: 768px) {
+  #navbar {
+    flex-direction: row;
+  }
+}
+
+#navbar-list {
+  display: none;
+}
+
+#navbar-list li, #navbar-container li {
+  list-style: none;
+}
+#navbar-container li {
+  margin: 0.5rem 0;
+}
+
+#navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 100%;
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  #navbar-list {
+    display: flex;
+    justify-content: space-between; 
+  }
+
+  #navbar-list a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 1rem;
+  }
+
+  #navbar-list a:hover {
+    color: var(--hover-text-color);
+    text-decoration: underline;
+  }
+}
+
+#toggle-nav-menu {
+  display: block;
+}
+
+#toggle-nav-menu button {
+  background: none;
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  #toggle-nav-menu {
+    display: none;
+  }
+}
+
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+a:hover {
+  color: var(--hover-text-color);
+  text-decoration: underline;
+}
+
+/* Dark mode toggle button */
+.project-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 30px;
+  margin-left: auto;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.project-button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.07);
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle {
+  background-color: var(--header-bg);
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: var(--text-color);
+}
+
+#top-header {
+  background-color: var(--background-color);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+
+#header-content {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 5rem;
+  flex-wrap: wrap;
+}
+
+#social-links {
+  
+}
+
+#header {
+  background-color: var(--header-bg);
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+}
+
+#project-header {
+  margin: 4rem 5rem;
+}
+
+#projects-section { 
+  min-height: 250px;
+  border: solid 2px var(--border-color);
+  margin: 2rem 5rem;
+  padding: 2rem;
+}
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#projects-summary {
+  border: solid 2px var(--border-color);
+  margin: 2rem auto;
+  width: 30%;
+  min-height: 150px;
+  border-radius: 15px;
+}
+
+#projects-summary h2, #projects-summary p {
+  text-align: center;
+  margin: 1rem;
+  padding: 0.5rem 0;
+}
+
+.project {
+  padding: 1rem 5rem;
+  margin: 1rem;
+  border: solid 1px var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--box-shadow-color);
+}
+
+#project-form {
+    max-width: 600px; 
+    margin: 4rem auto; 
+    padding: 4rem;
+    background-color: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--box-shadow-color);
+}
+
+#project-form label {
+    display: block; 
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px; 
+  border: 1px solid var(--form-input-border);
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s ease; 
+}
+
+.form-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 0 auto; 
+  display: block; 
+}
+
+.form-button:hover {
+  background-color: var(--form-button-hover-bg);
+  transform: scale(1.07);
+  transition: transform 0.3s ease;
+}
+
+footer {
+  background-color: var(--header-bg);
+  padding: 1rem;
+  text-align: center;
+  font-size: 25px;
+}
+
